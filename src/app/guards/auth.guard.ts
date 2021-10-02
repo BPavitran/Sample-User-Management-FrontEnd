@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private userService: UserService
   ) {
   }
 
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private actualCan(): any {
-    const user = this.authService.getCurrentUser();
+    const user = this.userService.getCurrentUser();
     if (!user) {
     // noinspection JSIgnoredPromiseFromCall
     this.router.navigateByUrl('/');

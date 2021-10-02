@@ -4,7 +4,8 @@
     <mat-card-content>
       <form name="loginForm" [formGroup]="loginForm">
         <div class="l12 m12 s12">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
             <input type="text" matInput placeholder="Email" formControlName="email">
             <mat-error *ngIf="loginForm.get('email').hasError('required')">
               Email is required
@@ -18,7 +19,8 @@
         </div>
 
         <div class="l12 m12 s12">
-          <mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
             <input type="password" matInput placeholder="Password" formControlName="password">
             <mat-error>
               Password is required

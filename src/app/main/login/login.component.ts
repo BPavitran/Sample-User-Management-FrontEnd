@@ -1,5 +1,5 @@
 import { UserType } from './../../common/user-type';
-import { AuthService } from './../../services/auth.service';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private _formBuilder: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private _snackBar: MatSnackBar,
   ) { }
 
@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
   logIn(): void {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
-    this.authService.login(email, password).subscribe(res => {
+    this.userService.login(email, password).subscribe(res => {
       if (res.success) {
-        const user = this.authService.getCurrentUser();
+        const user = this.userService.getCurrentUser();
           if(user && user.userType == UserType.ADMIN){
           this.router.navigateByUrl('/users');
         }
