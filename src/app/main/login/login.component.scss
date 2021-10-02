@@ -1,0 +1,16 @@
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 300px;
+  text-align: center;
+  height: 350px;
+}
