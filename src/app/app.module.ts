@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './main/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -32,17 +33,17 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-create',
     component: UserCreateComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-update/:id',
     component: UserUpdateComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 
