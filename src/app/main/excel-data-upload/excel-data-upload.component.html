@@ -1,7 +1,7 @@
 <h5 mat-dialog-title>Create or Update User with Excel</h5>
 
 <div mat-dialog-content class="mat-typography">
-  <div class="pt10-0">
+  <div>
     <input class="form-control" type="file" accept=".xls,.xlsx" (change)="fileChangeEvent($event)"/>
   </div>
 
@@ -23,7 +23,7 @@
       <!-- UserType Column -->
       <ng-container matColumnDef="userType">
         <th mat-header-cell *matHeaderCellDef> User Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.userType | lowercase}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.userType | userType}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -34,7 +34,7 @@
     <mat-paginator [pageSizeOptions]="[12, 24, 36]" showFirstLastButtons></mat-paginator>
   </div>
 
-  <div *ngIf="users.length" class="pt10-0">
+  <div *ngIf="users.length" class="bottom-button">
     <button *ngIf="uploadType == ExcelUserUploadType.CREATE" mat-raised-button type="button" class="button button-red" color="primary" (click)="createUsers()">Create users</button>
     <button *ngIf="uploadType == ExcelUserUploadType.UPDATE" mat-raised-button type="button" class="button button-red" color="primary" (click)="updateUsers()">Update users</button>
   </div>

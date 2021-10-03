@@ -15,7 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UsersComponent } from './main/users/users.component';
-import { AuthGuard } from './guards/auth.guard';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserUpdateComponent } from './main/user-update/user-update.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,6 +22,7 @@ import { UserCreateComponent } from './main/user-create/user-create.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ExcelDataUploadComponent } from './main/excel-data-upload/excel-data-upload.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { UserTypePipe } from './pipes/user-type.pipe';
 
 const appRoutes: Routes = [
   {
@@ -53,7 +53,8 @@ const appRoutes: Routes = [
     UsersComponent,
     UserUpdateComponent,
     UserCreateComponent,
-    ExcelDataUploadComponent
+    ExcelDataUploadComponent,
+    UserTypePipe,
   ],
   imports: [
     CommonModule,
