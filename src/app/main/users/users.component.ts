@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
 
   searchName;
 
-  displayedColumns: string[] = ['name', 'email', 'userType', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'email', 'userType', 'age', 'address', 'edit', 'delete'];
   dataSource = new MatTableDataSource<User>(this.users);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
