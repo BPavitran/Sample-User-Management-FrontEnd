@@ -2,6 +2,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { UserUpdateComponent } from './main/user-update/user-update.component';
 import { MatSelectModule } from '@angular/material/select';
 import { UserCreateComponent } from './main/user-create/user-create.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ExcelDataUploadComponent } from './main/excel-data-upload/excel-data-upload.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const appRoutes: Routes = [
   {
@@ -28,7 +32,7 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'user-create',
@@ -48,9 +52,11 @@ const appRoutes: Routes = [
     LoginComponent,
     UsersComponent,
     UserUpdateComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    ExcelDataUploadComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -60,15 +66,20 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatProgressBarModule,
 
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
 
+  ],
+  entryComponents: [
+    ExcelDataUploadComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

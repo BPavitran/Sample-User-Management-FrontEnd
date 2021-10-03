@@ -77,4 +77,14 @@ export class UserService {
     const url = Util.apiUrl('delete/user');
     return this.httpClient.post<Response<User>>(url, {userId}).pipe(map(res => res));
   }
+
+  createBulkUsers(usersData : User[]) {
+    const url = Util.apiUrl('create-bulk/user');
+    return this.httpClient.post<Response<User[]>>(url, {usersData}).pipe(map(res => res));
+  }
+
+  updateBulkUsers(usersData : User[]) {
+    const url = Util.apiUrl('update-bulk/user');
+    return this.httpClient.post<Response<User[]>>(url, {usersData}).pipe(map(res => res));
+  }
 }

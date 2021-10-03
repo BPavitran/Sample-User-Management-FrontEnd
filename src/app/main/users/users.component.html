@@ -5,11 +5,24 @@
   <div class="col l6 m6 s12">
       <input class="textField white" matInput [(ngModel)]="searchName" (ngModelChange)="getFilteredUser()" placeholder="Search by Name">
   </div>
-  <div class="col l6 m6 s12 right-align">
+  <div class="right-align">
+    <div class="col l2 m2 s4">
+      <div class="top-btn">
+          <button mat-raised-button type="button" color="primary" (click)="createUsersWithExcelWindow()">Create with Excel sheet</button>
+      </div>
+    </div>
+    <div class="col l2 m2 s4">
+      <div class="top-btn">
+          <button mat-raised-button type="button" color="primary" (click)="updateUsersWithExcelWindow()">Update with Excel sheet</button>
+      </div>
+    </div>
+    <div class="col l2 m2 s4">
       <div class="top-btn">
           <button mat-raised-button type="button" color="primary" [routerLink]="['/user-create']">Create new user</button>
       </div>
+    </div>
   </div>
+
 </div>
 
 <table mat-table [dataSource]="dataSource">

@@ -2,10 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { ExcelDataUploadComponent } from '../excel-data-upload/excel-data-upload.component';
 
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from '@angular/material/paginator';
 import { SnackBar } from 'src/app/common/snackbar';
+import { MatDialog } from '@angular/material/dialog';
+import { ExcelUserUploadType } from 'src/app/common/excel-user-upload-type';
 
 @Component({
   selector: 'app-users',
@@ -27,6 +30,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private _snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +68,30 @@ export class UsersComponent implements OnInit {
         new SnackBar().openSnackBar(this._snackBar, res.message, 'OK', 5000, 'warn');
       }
     })
+  }
+
+  createUsersWithExcelWindow(){
+    const dialogRef = this.dialog.open(ExcelDataUploadComponent, {data : {uploadtype: ExcelUserUploadType.CREATE}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.userService.getAllUsers().subscribe(users => {
+        this.users = users;
+        this.dataSource = new MatTableDataSource<User>(this.users);
+        this.dataSource.paginator = this.paginator;
+      })
+    });
+  }
+
+  updateUsersWithExcelWindow() {
+    const dialogRef = this.dialog.open(ExcelDataUploadComponent, {data : {uploadtype: ExcelUserUploadType.UPDATE}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.userService.getAllUsers().subscribe(users => {
+        this.users = users;
+        this.dataSource = new MatTableDataSource<User>(this.users);
+        this.dataSource.paginator = this.paginator;
+      })
+    });
   }
 
 }
