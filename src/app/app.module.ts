@@ -32,17 +32,17 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'user-create',
     component: UserCreateComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'user-update/:id',
     component: UserUpdateComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
 ];
 
